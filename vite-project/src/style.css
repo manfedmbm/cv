@@ -2,10 +2,15 @@
 
 @layer base {
   h1 {
-    font-size: var(--text-4xl);
+    font-size: var(--text-5xl);
     display: inline;
   }
   h2 {
-    font-size: var(--text-2xl);
+    font-size: var(--text-3xl);
+  }
+  h3 {
+    font-size: var(--text-lg);
+    font-weight: 600;
+    display: inline;
   }
 }
