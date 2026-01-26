@@ -2,15 +2,15 @@
 
 @layer base {
   h1 {
-    font-size: var(--text-5xl);
-    display: inline;
+    @apply text-6xl font-semibold text-sky-950 inline;
   }
   h2 {
-    font-size: var(--text-3xl);
+    @apply py-1 pl-6 text-3xl text-white bg-sky-950;
   }
   h3 {
-    font-size: var(--text-lg);
-    font-weight: 600;
-    display: inline;
+    @apply text-lg font-semibold inline;
+  }
+  h4 {
+    @apply text-base italic font-semibold text-gray-600 inline;
   }
 }
