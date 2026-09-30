@@ -5,311 +5,287 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="/src/style.css" rel="stylesheet">
     <title>Lebenslauf Joel Schmalöer</title>
+    <style>
+      @page { size: A4; margin: 0; margin-top: 6mm; }
+      @page :first { margin-top: 0; }
+      @media print {
+        /* 210mm is 793.7px; Firefox rounds it and leaves a hairline gap at the right edge */
+        h2 { width: 100% !important; }
+      }
+
+      :root { --accent: #0b3250; --muted: #64748b; --chip: #f1f5f9; }
+      body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+      /* Profile */
+      .profile { margin: 0 1.5rem 1rem; padding: .6rem 1rem; background: var(--chip); border-left: 4px solid var(--accent); border-radius: 0 .5rem .5rem 0; }
+      .profile .lead { font-size: 1.05rem; font-weight: 600; color: var(--accent); }
+      .profile .lead span { font-weight: 400; color: var(--muted); }
+
+      /* Timeline entries: date | content | logo */
+      .entry { display: grid; grid-template-columns: 9rem 1fr 7rem; column-gap: 1.5rem; margin: 1.25rem 1.5rem 0; break-inside: avoid; }
+      .entry ul { margin-left: 1rem; list-style: disc; hyphens: none; }
+      .entry > img { justify-self: end; }
+      .entry > div > :is(h3, h4) { display: block; }
+      .entry.long { break-inside: auto; }
+      .entry li { break-inside: avoid; }
+      .entry h4, h2 { break-after: avoid; }
+
+      /* Project facts (replaces nested lists) */
+      .facts { display: flex; flex-wrap: wrap; align-items: center; gap: .25rem .4rem; margin: .3rem 0 .75rem; font-size: .75rem; }
+      .facts dl { display: contents; }
+      .facts dl > div { background: var(--chip); border-radius: .375rem; padding: .1rem .5rem; }
+      .facts dt, .facts dd { display: inline; }
+      .facts dt { color: var(--muted); }
+      .facts dd { margin-left: .3rem; font-weight: 600; }
+      .badge { display: inline-flex; align-items: center; border-radius: 9999px; padding: .1rem .6rem; font-weight: 600; }
+      .badge.done { background: #dcfce7; color: #166534; }
+      .badge.running { background: #fef3c7; color: #92400e; }
+
+      /* Grouped skills */
+      .skills { display: grid; grid-template-columns: 9rem 1fr; gap: .6rem 1.5rem; margin: 1.25rem 1.5rem 0; }
+      .skills dt { font-weight: 600; }
+      .skills dd { max-width: 30rem; }
+      .skills ul { display: flex; flex-wrap: wrap; gap: .25rem .4rem; }
+      .skills li { background: var(--chip); border-radius: .375rem; padding: .05rem .55rem; font-size: .85rem; }
+    </style>
   </head>
   <body>
-    <div>
-      <div class="w-[210mm] mb-6 mx-auto flex flex-col bg-white">
-        <div class="mx-6 mt-6 mb-4 flex justify-between items-end">
-          <h1>Lebenslauf</h1>
-          <div class="flex flex-row justify-end items-center gap-4">
-            <p class="flex flex-col text-right">
-              <span>Joel Schmalöer</span>
-              <span><a href="mailto:joel.schmaloeer@gmail.com">joel.schmaloeer@gmail.com</a></span>
-              <span><a href="https://linkedin.com/in/joel-schmalöer-b7b180211/">LinkedIn</a></span>
-              <span>+49 172 5129121</span>
-            </p>
-            <img class="size-28 rounded-xl" src="./src/joel.png" alt="Foto von Joel Schmalöer">
-          </div>
+    <main class="w-[210mm] mb-6 mx-auto flex flex-col bg-white">
+      <header class="mx-6 mt-6 mb-4 flex justify-between items-end">
+        <h1>Lebenslauf</h1>
+        <div class="flex flex-row justify-end items-center gap-4">
+          <address class="flex flex-col text-right not-italic">
+            <span>Joel Schmalöer (He/Him)</span>
+            <span><a href="mailto:joel.schmaloeer@gmail.com">joel.schmaloeer@gmail.com</a></span>
+            <span><a href="https://www.linkedin.com/in/joel-schmal%C3%B6er-b7b180211/">LinkedIn</a></span>
+            <span>+49 172 5129121 | Münster</span>
+          </address>
+          <img class="size-28 rounded-xl" src="./src/joel.png" alt="Foto von Joel Schmalöer">
         </div>
-        <h2 class="mt-2">Praktische Erfahrung</h2>
-        <div class="ml-6 mb-8">
-          <div class="mt-5 break-inside-avoid">
-            <span>2024/01 - 2026/01</span>
-            <div class="mt-2 mx-6 flex gap-2">
-              <div class="ml-36 -mt-8 flex gap-10 w-full">
-                <div class="flex flex-col w-3/4">
-                  <h3>Projektmanager</h3>
-                  <h4>prodexa GmbH - Dortmund</h4>
-                  <ul class="ml-4 list-disc list-outside hyphens-auto">
-                    <li>
-                      Planung, Steuerung und Umsetzung von PIM-Projekten  als 
-                      hauptverantwortlicher und stellvertretender Projektleiter 
-                      im deutschen und internationalen Raum
-                    </li>
-                    <li>
-                      Beratung von Kunden bei der Modellierung von Datenstrukturen
-                      und Prozessen
-                    </li>
-                    <li>
-                      Entwicklung kundenspezifischer Anpassungen auf 
-                      Basis von Java, Groovy und Freemarker
-                    </li>
-                    <li>
-                      Migration bestehender Kundensysteme auf Cloud-Umgebungen
-                    </li>
-                    <li>
-                      Design und Entwicklung standardisierter und barrierefreier 
-                      PDF-Datenblätter auf Basis von HTML/CSS
-                    </li>
-                    <li>
-                      Vorbereitung und Durchführung von
-                      Sales-Präsentationen in Zusammenarbeit mit dem
-                      Vertrieb
-                    </li>
-                    <li>
-                      Organisation und Durchführung von Workshops und
-                      Schulungen für Kunden im Umgang mit PIM-Systemen
-                    </li>
-                  </ul>
+      </header>
+
+      <section class="profile" aria-label="Kurzprofil">
+        <p class="lead">Projektmanager mit technischem Hintergrund <span>(Fachinformatiker AE)</span></p>
+        <p>5 Jahre PIM-Projekterfahrung - international</p>
+      </section>
+
+      <section class="mb-6" aria-labelledby="erfahrung">
+        <h2 id="erfahrung" class="mt-2">Praktische Erfahrung</h2>
+
+        <article class="entry">
+          <p><time datetime="2026-04">2026/04</time> - heute</p>
+          <div>
+            <h3>Projektmanager</h3>
+            <h4>prodexa GmbH - Dortmund | Münster (Hybrid)</h4>
+            <ul>
+              <li>
+                Projektleitung in der Einführung einer PIM-Marktplatzlösung zum Austausch von Preislisten (Pricebooks) für einen US-amerikanischen Kunden der Gasindustrie
+                <div class="facts">
+                  <span class="badge done">Erfolgreich abgeschlossen</span>
+                  <dl>
+                    <div><dt>Budget</dt><dd>sechsstellig</dd></div>
+                    <div><dt>Aufwand</dt><dd>über 100 Tage</dd></div>
+                    <div><dt>Produkte</dt><dd>≈ 3.000.000</dd></div>
+                  </dl>
                 </div>
-                <img class="h-8 mt-1" src="./src/logo/prodexa.png" alt="prodexa Logo">
-              </div>
-            </div>
-          </div>
-          <div class="mt-5 break-inside-avoid">
-            <span>2021/08 - 2024/01</span>
-            <div class="mt-2 mx-6 flex gap-2">
-              <div class="ml-36 -mt-8 flex gap-10 w-full">
-                <div class="flex flex-col w-3/4">
-                  <h3>Auszubildender FIAE</h3>
-                  <h4>prodexa GmbH - Dortmund</h4>
-                  <ul class="ml-4 list-disc list-outside hyphens-auto">
-                    <li>
-                      Dreijährige duale Ausbildung zum Fachinformatiker
-                      (Fachrichtung Anwendungsentwicklung)
-                    </li>
-                    <li>
-                      Verkürzt auf zweieinhalb Jahre
-                    </li>
-                    <li>
-                      Entwicklung kundenspezifischer Anpassungen auf 
-                      Basis von Java, Groovy und Freemarker
-                    </li>
-                    <li>
-                      Abschlussnote IHK: befriedigend (76%)
-                    </li>
-                  </ul>
+              </li>
+              <li>
+                Projektleitung in der Migration einer PIM-Lösung auf eine Cloud-Umgebung für einen US-amerikanischen Kunden der Gasindustrie
+                <div class="facts">
+                  <span class="badge running">Laufend</span>
+                  <dl>
+                    <div><dt>Budget</dt><dd>sechsstellig</dd></div>
+                    <div><dt>Aufwand</dt><dd>über 80 Tage</dd></div>
+                    <div><dt>Produkte</dt><dd>≈ 320.000</dd></div>
+                  </dl>
                 </div>
-                <img class="h-8 mt-1" src="./src/logo/prodexa.png" alt="prodexa Logo">
-              </div>
-            </div>
-          </div>
-          <div class="mt-5 break-inside-avoid">
-            <span>2018/10 - 2018/12</span>
-            <div class="mt-2 mx-6 flex gap-2">
-              <div class="ml-36 -mt-8 flex gap-10 w-full">
-                <div class="flex flex-col w-3/4">
-                  <h3>Praktikant</h3>
-                  <h4>Polizei Recklinghausen - Recklinghausen</h4>
-                  <ul class="ml-4 list-disc list-outside hyphens-auto">
-                    <li>
-                      Achtwöchiges Schülerpraktikum in der
-                      Systemintegration
-                    </li>
-                  </ul>
+              </li>
+              <li>
+                Projektleitung in der Einführung einer PIM-Lösung und eines Kundenportals für ein deutsches Unternehmen der Kabelindustrie
+                <div class="facts">
+                  <span class="badge running">Laufend</span>
+                  <dl>
+                    <div><dt>Budget</dt><dd>fünfstellig</dd></div>
+                    <div><dt>Aufwand</dt><dd>über 40 Tage</dd></div>
+                    <div><dt>Produkte</dt><dd>≈ 40.000</dd></div>
+                  </dl>
                 </div>
-                <img class="h-8 mt-1 -ml-1" src="./src/logo/polizei-recklinghausen.svg" alt="Polizei Recklinghausen Logo">
-              </div>
-            </div>
+              </li>
+            </ul>
           </div>
-          <div class="mt-5 break-inside-avoid">
-            <span>2014/03 - 2014/04</span>
-            <div class="mt-2 mx-6 flex gap-2">
-              <div class="ml-36 -mt-8 flex gap-10 w-full">
-                <div class="w-3/4 flex flex-col">
-                  <h3>Praktikant</h3>
-                  <h4>LH Computer Systeme GmbH - Lüdinghausen</h4>
-                  <ul class="ml-4 list-disc list-outside hyphens-auto">
-                    <li>
-                      Dreiwöchiges Schülerpraktikum in der
-                      Systemintegration
-                    </li>
-                  </ul>
-                </div>
-                <img class="h-8 mt-1" src="./src/logo/lh-computer.jpg" alt="LH-Computer Logo">
-              </div>
-            </div>
+          <img class="h-8 mt-1" src="./src/logo/prodexa.png" alt="prodexa Logo">
+        </article>
+
+        <article class="entry long">
+          <p><time datetime="2024-01">2024/01</time> - <time datetime="2026-01">2026/01</time></p>
+          <div>
+            <h3>Projektmanager</h3>
+            <h4>prodexa GmbH - Dortmund | Münster (Hybrid)</h4>
+            <ul>
+              <li>Planung, Steuerung und Umsetzung von PIM-Projekten als hauptverantwortlicher und stellvertretender Projektleiter im deutschen und internationalen Raum</li>
+              <li>Beratung von Kunden bei der Modellierung von Datenstrukturen und Prozessen</li>
+              <li>Entwicklung kundenspezifischer Anpassungen auf Basis von Java, Groovy und Freemarker</li>
+              <li>Migration bestehender Kundensysteme auf Cloud-Umgebungen</li>
+              <li>Design und Entwicklung standardisierter und barrierefreier PDF-Datenblätter auf Basis von HTML/CSS</li>
+              <li>Vorbereitung und Durchführung von Sales-Präsentationen in Zusammenarbeit mit dem Vertrieb</li>
+              <li>Organisation und Durchführung von Workshops und Schulungen für Kunden im Umgang mit PIM-Systemen</li>
+            </ul>
           </div>
-        </div>
-        <div class="break-inside-avoid">
-          <h2 class="">Schulische Ausbildung</h2>
-            <div class="ml-6 mt-5 break-inside-avoid">
-              <span>2021/08 - 2024/01</span>
-              <div class="mt-2 mx-6 flex gap-2">
-                <div class="ml-36 -mt-8 flex gap-10 w-full">
-                  <div class="flex flex-col w-3/4">
-                    <h3>Auszubildender FIAE</h3>
-                    <h4>Robert-Bosch-Berufskolleg, Dortmund</h4>
-                    <ul class="ml-4 list-disc list-outside hyphens-auto">
-                      <li>
-                        Dreijährige duale Ausbildung zum Fachinformatiker
-                        (Fachrichtung Anwendungsentwicklung)
-                      </li>
-                      <li>
-                        Verkürzt auf zweieinhalb Jahre
-                      </li>
-                      <li>
-                        Abschlussnote Berufsschule: 1,8
-                      </li>
-                    </ul>
-                  </div>
-                  <img class="h-6 mt-2" src="./src/logo/rbbk.png" alt="Robert-Bosch-Berufskolleg Logo">
-                </div>
-              </div>
-            </div>
-        </div>
-        <div class="ml-6">
-          <div class="mt-5 break-inside-avoid">
-            <span>2018/09 - 2021/03</span>
-            <div class="mt-2 mx-6 flex gap-2">
-              <div class="ml-36 -mt-8 flex gap-10 w-full">
-                <div class="flex flex-col w-3/4">
-                  <h3>Bachelorstudiengang Wirtschaftsinformatik</h3>
-                  <h4>Fachhochschule Dortmund, Dortmund</h4>
-                  <ul class="ml-4 list-disc list-outside hyphens-auto">
-                    <li>
-                      Ohne Abschluss
-                    </li>
-                    <li>
-                      45 ECTS-Punkte
-                    </li>
-                    <li>
-                      12 bestandene Module
-                    </li>
-                    <li>
-                      Durchschnitssnote: 2,3
-                    </li>
-                  </ul>
-                </div>
-                <img class="h-8 mt-2" src="./src/logo/fh-dortmund.svg" alt="Fachhochschule Dortmund Logo">
-              </div>
-            </div>
+          <img class="h-8 mt-1" src="./src/logo/prodexa.png" alt="prodexa Logo">
+        </article>
+
+        <article class="entry">
+          <p><time datetime="2021-08">2021/08</time> - <time datetime="2024-01">2024/01</time></p>
+          <div>
+            <h3>Auszubildender FIAE</h3>
+            <h4>prodexa GmbH - Dortmund</h4>
+            <ul>
+              <li>Dreijährige duale Ausbildung zum Fachinformatiker (Fachrichtung Anwendungsentwicklung)</li>
+              <li>Verkürzt auf zweieinhalb Jahre</li>
+              <li>Entwicklung kundenspezifischer Anpassungen auf Basis von Java, Groovy und Freemarker</li>
+              <li>Abschlussnote IHK: befriedigend (76%)</li>
+            </ul>
           </div>
-          <div class="mt-5 break-inside-avoid">
-            <span>2015/08 - 2018/07</span>
-            <div class="mt-2 mx-6 flex gap-2">
-              <div class="ml-36 -mt-8 flex gap-10 w-full">
-                <div class="flex flex-col w-3/4">
-                  <h3>Auszubildender ITA</h3>
-                  <h4>Berufskolleg Ostvest, Datteln</h4>
-                  <ul class="ml-4 list-disc list-outside hyphens-auto">
-                    <li>
-                      Ausbildung zum Informationstechnischen Assistenten
-                    </li>
-                    <li>
-                      Fachhochschulreife (Note: 2,7)
-                    </li>
-                  </ul>
-                </div>
-                <img class="h-15 mt-2 -ml-1" src="./src/logo/bko.png" alt="Berufskolleg Ostvest Logo">
-              </div>
-            </div>
+          <img class="h-8 mt-1" src="./src/logo/prodexa.png" alt="prodexa Logo">
+        </article>
+
+        <article class="entry">
+          <p><time datetime="2017-10">2017/10</time> - <time datetime="2017-12">2017/12</time></p>
+          <div>
+            <h3>Praktikant</h3>
+            <h4>Polizei Recklinghausen - Recklinghausen</h4>
+            <ul>
+              <li>Achtwöchiges Schülerpraktikum in der Systemintegration</li>
+            </ul>
           </div>
-          <div class="mt-5 break-inside-avoid">
-            <span>2013/08 - 2015/07</span>
-            <div class="mt-2 mx-6 flex gap-2">
-              <div class="ml-36 -mt-8 flex gap-10 w-full">
-                <div class="flex flex-col w-3/4">
-                  <h3>Schüler</h3>
-                  <h4>Städtische Realschule Lüdinghausen, Lüdinghausen</h4>
-                  <ul class="ml-4 list-disc list-outside hyphens-auto">
-                    <li>
-                      Realschulabschluss
-                    </li>
-                  </ul>
-                </div>
-                <!-- <img class="h-12 mt-2" src="./src/logo/realschule.svg" alt="Städtische Realschule Lüdinghausen Logo"> -->
-              </div>
-            </div>
+          <img class="h-8 mt-1 -ml-1" src="./src/logo/polizei-recklinghausen.svg" alt="Polizei Recklinghausen Logo">
+        </article>
+
+        <article class="entry">
+          <p><time datetime="2014-03">2014/03</time> - <time datetime="2014-04">2014/04</time></p>
+          <div>
+            <h3>Praktikant</h3>
+            <h4>LH Computer Systeme GmbH - Lüdinghausen</h4>
+            <ul>
+              <li>Dreiwöchiges Schülerpraktikum in der Systemintegration</li>
+            </ul>
           </div>
-          <div class="mt-5 break-inside-avoid">
-            <span>2008/08 - 2013/07</span>
-            <div class="mt-2 mx-6 flex gap-2">
-              <div class="ml-36 -mt-8 flex gap-10 w-full">
-                <div class="flex flex-col w-3/4">
-                  <h3>Schüler</h3>
-                  <h4>St. Antonius Gymnasium Lüdinghausen, Lüdinghausen</h4>
-                  <ul class="ml-4 list-disc list-outside hyphens-auto">
-                    <li>
-                      Ohne Abschluss
-                    </li>
-                  </ul>
-                </div>
-                <img class="h-6 mt-2 -ml-3" src="./src/logo/anton.svg" alt="St. Antonius Gymnasium Lüdinghausen Logo">
-              </div>
-            </div>
+          <img class="h-8 mt-1" src="./src/logo/lh-computer.jpg" alt="LH-Computer Logo">
+        </article>
+      </section>
+
+      <section class="mb-2" aria-labelledby="ausbildung">
+        <h2 id="ausbildung">Schulische Ausbildung</h2>
+
+        <article class="entry">
+          <p><time datetime="2021-08">2021/08</time> - <time datetime="2024-01">2024/01</time></p>
+          <div>
+            <h3>Auszubildender FIAE</h3>
+            <h4>Robert-Bosch-Berufskolleg, Dortmund</h4>
+            <ul>
+              <li>Abschlussnote Berufsschule: 1,8</li>
+            </ul>
           </div>
-          <div class="mt-5 break-inside-avoid">
-            <span>2004/09 - 2008/08</span>
-            <div class="mt-2 mx-6 flex gap-2">
-              <div class="ml-36 -mt-8 flex gap-10 w-full">
-                <div class="flex flex-col w-3/4">
-                  <h3>Schüler</h3>
-                  <h4>Wieschhof-Grundschule Olfen, Olfen</h4>
-                </div>
-                <img class="h-12" src="./src/logo/Wieschhofschule.png" alt="Wieschhof-Grundschule Olfen Logo">
-              </div>
-            </div>
+          <img class="h-6 mt-2" src="./src/logo/rbbk.png" alt="Robert-Bosch-Berufskolleg Logo">
+        </article>
+
+        <article class="entry">
+          <p><time datetime="2018-09">2018/09</time> - <time datetime="2021-03">2021/03</time></p>
+          <div>
+            <h3>Bachelorstudiengang Wirtschaftsinformatik</h3>
+            <h4>Fachhochschule Dortmund, Dortmund</h4>
+            <ul>
+              <li>Ohne Abschluss</li>
+              <li>45 ECTS-Punkte</li>
+              <li>12 bestandene Module</li>
+              <li>Durchschnittsnote: 2,3</li>
+            </ul>
           </div>
-        </div>
-        <h2 class="mt-4">Sonstiges</h2>
-        <div class="mt-5 ml-6">
-          <div class="break-inside-avoid">
-            <h3>Sprachen</h3>
-              <ul class="ml-4 list-disc list-outside hyphens-auto">
-                <li>
-                  Deutsch (Muttersprache)
-                </li>
-                <li>
-                  Englisch (Verhandlungssicher)
-                </li>
-              </ul>
+          <img class="h-8 mt-2" src="./src/logo/fh-dortmund.svg" alt="Fachhochschule Dortmund Logo">
+        </article>
+
+        <article class="entry">
+          <p><time datetime="2015-08">2015/08</time> - <time datetime="2018-07">2018/07</time></p>
+          <div>
+            <h3>Auszubildender ITA</h3>
+            <h4>Berufskolleg Ostvest, Datteln</h4>
+            <ul>
+              <li>Ausbildung zum Informationstechnischen Assistenten</li>
+              <li>Fachhochschulreife (Note: 2,7)</li>
+            </ul>
           </div>
-        </div>
-        <div class="mt-5 ml-6">
-          <div class="break-inside-avoid">
-            <h3>Technologiekenntnisse</h3>
-            <p class="hyphens-auto max-w-2/3 ml-4">
-              Java, Groovy, Freemarker, PostgreSQL, HTML5, CSS3,
-              Tailwind CSS, JavaScript, Svelte, SvelteKit, 
-              REST, Docker, git, BMEcat, ETIM
-            </p>
-          </div>
-        </div>
-        <div class="mt-5 ml-6">
-          <div class="break-inside-avoid">
-            <h3>Softwarekenntnisse</h3>
-            <p class="hyphens-auto max-w-2/3 ml-4">
-              Atlassian Jira, Zoho, PIM/PXM, Microsoft Office, Google Suite
-            </p>
-          </div>
-        </div>
-        <div class="mt-5 ml-6">
-          <div class="break-inside-avoid">
-            <h3>Hobbies</h3>
-            <p class="hyphens-auto max-w-2/3 ml-4">
-              Filme, Joggen, Tennis, Computer, Kochen, Brettspiele
-            </p>
-          </div>
-        </div>
-        <span class="mt-5 mx-auto text-xs font-extralight">Diesen Lebenslauf habe ich eigentstängig erstellt.</span>
-        <div class="mb-2 mx-auto text-xs font-extralight">
-          <span>Source code: <a href="https://github.com/manfedmbm/cv">github.com/manfedmbm/cv</a></span>
-          <span>Version 2026.02.03-14:56</span>
-        </div>
-      </div>
-    </div>
+          <img class="h-15 mt-2 -ml-1" src="./src/logo/bko.png" alt="Berufskolleg Ostvest Logo">
+        </article>
+      </section>
+
+      <section aria-labelledby="sonstiges">
+        <h2 id="sonstiges" class="mt-4">Sonstiges</h2>
+        <dl class="skills">
+          <dt>Sprachen</dt>
+          <dd>
+            <ul>
+              <li>Deutsch (Muttersprache)</li>
+              <li>Englisch (Verhandlungssicher)</li>
+            </ul>
+          </dd>
+
+          <dt>Backend</dt>
+          <dd>
+            <ul>
+              <li>Java</li><li>Groovy</li><li>Freemarker</li>
+            </ul>
+          </dd>
+
+          <dt>Frontend</dt>
+          <dd>
+            <ul>
+              <li>HTML5</li><li>CSS3</li><li>Tailwind CSS</li><li>JavaScript</li><li>Svelte</li><li>SvelteKit</li>
+            </ul>
+          </dd>
+
+          <dt>Daten &amp; DevOps</dt>
+          <dd>
+            <ul>
+              <li>PostgreSQL</li><li>REST</li><li>Docker</li><li>git</li>
+            </ul>
+          </dd>
+
+          <dt>Datenstandards</dt>
+          <dd>
+            <ul>
+              <li>BMEcat</li><li>ETIM</li>
+            </ul>
+          </dd>
+
+          <dt>Software</dt>
+          <dd>
+            <ul>
+              <li>Atlassian Jira</li><li>Zoho</li><li>PIM/PXM</li><li>Microsoft Office</li><li>Google Suite</li>
+            </ul>
+          </dd>
+
+          <dt>Hobbies</dt>
+          <dd>
+            <ul>
+              <li>Filme</li><li>Computerspiele</li><li>Homeserver</li><li>Joggen</li><li>Tennis</li><li>Kochen</li><li>Brettspiele</li>
+            </ul>
+          </dd>
+        </dl>
+      </section>
+
+      <footer class="mt-4 mb-2 mx-auto text-xs font-extralight">
+        Source code: <a href="https://github.com/manfedmbm/cv">github.com/manfedmbm/cv</a> |
+        <time id="build-date" datetime="{{BUILD_DATE_ISO}}">{{BUILD_DATE_DE}}</time>
+      </footer>
+    </main>
+    <script>
+      // Fallback if the Vite plugin did not replace the placeholders
+      const t = document.getElementById('build-date')
+      if (t.textContent.includes('{{')) {
+        const d = new Date()
+        t.dateTime = d.toISOString().slice(0, 10)
+        t.textContent = d.toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric' })
+      }
+    </script>
   </body>
 </html>
-
-<style>
-  @page {
-    size: A4;
-    margin: 0;
-    margin-top: 6mm;
-  }
-
-  @page:first {
-    margin-top: 0;
-  }
-</style>
